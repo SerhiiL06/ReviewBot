@@ -1,0 +1,5 @@
+Pipfile
+Pipfile.lock
+.venv
+__pycache__/
+.env
