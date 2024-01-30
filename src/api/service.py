@@ -1,6 +1,7 @@
 from abc import ABC
 
 from pymongo import DESCENDING
+from fastapi import HTTPException
 
 from core.mongo import Review
 
@@ -17,5 +18,6 @@ class ReviewService(AbstractReview):
             filter_data.update({"method": method})
         if location:
             filter_data.update({"location": location})
+
         result = Review.find(filter_data).sort([("create_date", DESCENDING)])
         return result
