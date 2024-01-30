@@ -3,3 +3,5 @@ Pipfile.lock
 .venv
 __pycache__/
 .env
+media
+Makefile

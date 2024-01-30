@@ -7,7 +7,7 @@ password = os.getenv("MONGO_PASSWORD")
 
 
 class MongoTools:
-    _DB_URL = f"mongodb+srv://{user}:{password}@secretfastapi.hpdseom.mongodb.net/?retryWrites=true&w=majority"
+    _DB_URL = f"mongodb+srv://admin:admin@secretfastapi.hpdseom.mongodb.net/?retryWrites=true&w=majority"
 
     @classmethod
     def get_client(cls) -> MongoClient:

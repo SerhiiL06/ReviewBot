@@ -1,23 +1,22 @@
 from aiogram import Dispatcher, Bot
 
-from core.config import settings
+from core.config import bot, dp
 
 from src.bot.handlers import register_hundlers
 
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
+from aiogram.types import BotCommand
 
 
 import asyncio
 
 
 async def main():
-    bot = Bot(settings.get_token)
+    BotCommand(command="help", description="Про що цей бот")
 
-    app = Dispatcher(bot, storage=MemoryStorage())
+    await register_hundlers(dp)
 
-    await register_hundlers(app)
-
-    await app.start_polling()
+    await dp.start_polling()
 
 
 if __name__ == "__main__":
