@@ -1,4 +1,4 @@
-<h2>ReviewBot<h2>
+<h2>ReviewBot</h2>
 
 ReviewBot is a Telegram bot designed to help users submit reviews and feedback in a structured manner. It utilizes the aiogram library for Telegram bot development and incorporates a state machine to guide users through the review submission process.
 
@@ -30,7 +30,7 @@ cd reviewbot
 
 ```bash
 
-docker-cumpose up
+docker-compose up
 
 ```
 
@@ -42,7 +42,7 @@ docker-cumpose up
 
 ```
 
-<h2>API Service<h2>
+<h2>API Service</h2>
 
 Usage
 
