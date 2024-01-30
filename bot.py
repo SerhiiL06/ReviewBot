@@ -1,9 +1,7 @@
-from core.config import dp
-from aiogram import executor
-from src.bot.handlers import register_handlers
-
-
 import asyncio
+
+from core.config import dp
+from src.bot.handlers import register_handlers
 
 
 async def main():

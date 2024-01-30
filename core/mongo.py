@@ -1,13 +1,14 @@
-from pymongo.mongo_client import MongoClient
 import os
 
+from pymongo.mongo_client import MongoClient
 
 user = os.getenv("MONGO_USER")
 password = os.getenv("MONGO_PASSWORD")
+name = os.getenv("MONGO_NAME")
 
 
 class MongoTools:
-    _DB_URL = f"mongodb+srv://admin:admin@secretfastapi.hpdseom.mongodb.net/?retryWrites=true&w=majority"
+    _DB_URL = f"mongodb+srv://{user}:{password}@{name}.hpdseom.mongodb.net/?retryWrites=true&w=majority"
 
     @classmethod
     def get_client(cls) -> MongoClient:

@@ -1,8 +1,11 @@
-from fastapi import APIRouter, Depends, status, Query
-from .service import ReviewService
 from typing import Annotated
-from .schemes import ReviewScheme
+
+from fastapi import APIRouter, Depends, Query, status
+
 from src.utils.regex import local_regex, methods_regex
+
+from .schemes import ReviewScheme
+from .service import ReviewService
 
 router = APIRouter(prefix="/reviews")
 

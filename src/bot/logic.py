@@ -1,6 +1,7 @@
-from openai import OpenAI
-from core.config import settings
 from aiogram.dispatcher import FSMContext
+from openai import OpenAI
+
+from core.config import BASE_DIR, settings
 from src.utils.promt import system_promt
 
 client = OpenAI(api_key=settings.get_openai_token)
@@ -9,17 +10,22 @@ client = OpenAI(api_key=settings.get_openai_token)
 from aiogram.types import Message
 
 
+async def cancel_operation(state: FSMContext, message: Message):
+    await state.finish()
+    return await message.answer("Ви в будь-який час можете знову це зробити :)")
+
+
 async def save_photo(message: Message):
-    result = await message.photo[-1].download(
-        destination_dir=f"/Users/serega/Desktop/courses/ReviewBot/media/"
-    )
+    result = await message.photo[-1].download(destination_dir=BASE_DIR / "media")
 
     return result.name
 
 
-from core.mongo import Review
-from aiogram.dispatcher import FSMContext
 from datetime import datetime
+
+from aiogram.dispatcher import FSMContext
+
+from core.mongo import Review
 
 
 async def save_review(state: FSMContext, method: str):

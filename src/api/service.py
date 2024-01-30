@@ -1,6 +1,8 @@
 from abc import ABC
-from core.mongo import Review
+
 from pymongo import DESCENDING
+
+from core.mongo import Review
 
 
 class AbstractReview(ABC):
