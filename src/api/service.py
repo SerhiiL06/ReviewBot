@@ -1,26 +1,19 @@
 from abc import ABC
 from core.mongo import Review
-from datetime import datetime
+from pymongo import DESCENDING
 
 
 class AbstractReview(ABC):
-    def add_review(self, comment: str, photo: str):
-        raise NotImplemented()
-
-    def find_reviews(self, location=None):
+    def find_reviews(self, location: str = None):
         raise NotImplemented()
 
 
 class ReviewService(AbstractReview):
-    def add_review(self, data: dict) -> dict:
-        result = Review.insert_one(
-            {
-                "user_id": data.get("user_id"),
-                "comment": data.get("comment"),
-                "photo": data.get("photo"),
-            }
-        )
-        return {"message": "CREATE", "code": "201", "objectId": str(result.inserted_id)}
-
-    def find_reviews(self, location: str = None) -> list[Review]:
-        return Review.find()
+    def find_reviews(self, method: str = None, location: str = None) -> list[Review]:
+        filter_data = {}
+        if method:
+            filter_data.update({"method": method})
+        if location:
+            filter_data.update({"location": location})
+        result = Review.find(filter_data).sort([("create_date", DESCENDING)])
+        return result
